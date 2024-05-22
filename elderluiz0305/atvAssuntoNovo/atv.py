@@ -27,6 +27,15 @@ def salvarTarefas():
         for x in tarefas:
             t.write(x+"\n")
             
+def carregar_tarefas():
+   try:
+    with open('tarefas.txt', 'r') as t:
+        tarefas = t.readlines()
+        for x in tarefas:
+            lista_tarefas.insert(0,x.strip())
+   except:
+       messagebox.showinfo("APP", "Bem Vindo ao APP Tarefas")
+
 #execução da janela:
 janela = ctk.CTk()
 janela.minsize(350,500)
@@ -67,4 +76,5 @@ lista_tarefas = Listbox(janela, width=27,
                         font=("Arial", 15))
 lista_tarefas.place(x=25, y=180)
 
+carregar_tarefas()
 janela.mainloop()
